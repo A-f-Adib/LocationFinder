@@ -13,6 +13,7 @@
 		74DBFB8B2D2AD452003602AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74DBFB8A2D2AD452003602AA /* Preview Assets.xcassets */; };
 		74DBFB922D2AD54B003602AA /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DBFB912D2AD54B003602AA /* Location.swift */; };
 		74DBFB942D2AD960003602AA /* Countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 74DBFB932D2AD960003602AA /* Countries.json */; };
+		74DBFB962D2ADB9A003602AA /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DBFB952D2ADB9A003602AA /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		74DBFB8A2D2AD452003602AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		74DBFB912D2AD54B003602AA /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		74DBFB932D2AD960003602AA /* Countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Countries.json; sourceTree = "<group>"; };
+		74DBFB952D2ADB9A003602AA /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				74DBFB832D2AD44A003602AA /* LocationFinderApp.swift */,
 				74DBFB852D2AD44A003602AA /* ContentView.swift */,
+				74DBFB952D2ADB9A003602AA /* Country.swift */,
 				74DBFB912D2AD54B003602AA /* Location.swift */,
 				74DBFB872D2AD452003602AA /* Assets.xcassets */,
 				74DBFB932D2AD960003602AA /* Countries.json */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74DBFB962D2ADB9A003602AA /* Country.swift in Sources */,
 				74DBFB862D2AD44A003602AA /* ContentView.swift in Sources */,
 				74DBFB922D2AD54B003602AA /* Location.swift in Sources */,
 				74DBFB842D2AD44A003602AA /* LocationFinderApp.swift in Sources */,
