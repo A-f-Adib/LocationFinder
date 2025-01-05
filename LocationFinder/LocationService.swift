@@ -67,6 +67,12 @@ class LocationService: ObservableObject {
                                             state: place.state,
                                             longitude: Double(place.longitude) ?? 0,
                                             latitude: Double(place.latitude) ?? 0)
+                
+                let range = -180.0...180.0
+                if !(range.contains(locationInfo!.latitude) && 
+                     range.contains(locationInfo!.latitude)) {
+                    errorString = "Invalid Map Coordinates"
+                }
             }
         } catch {
             errorString = "Could not decode returned result"

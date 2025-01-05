@@ -46,22 +46,33 @@ struct ContentView: View {
                         Text(errorString)
                             .foregroundStyle(Color.red)
                     }
+                    
                     if let locationInfo = locationService.locationInfo {
                         Text(locationInfo.placeName)
                         Text(locationInfo.state)
+                        
+                        
+                        if locationService.errorString == nil {
+                            MapView(longitude: locationInfo.longitude,
+                                    latitude: locationInfo.latitude)
+                                .padding()
+                        }
                     }
                 }
+                
                 if locationService.locationInfo == nil {
                     Image("locationFinder")
                 }
                 Spacer()
+                
             }
             .navigationTitle("Location Finder")
             .onChange(of: selectCountry) {
-                locationService.reset()
-                code = ""
+                 code = ""
             }
-           
+            .onChange(of: code) {
+                locationService.reset()
+            }
         }
        
     }
