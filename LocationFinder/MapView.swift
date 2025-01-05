@@ -10,18 +10,26 @@ import MapKit
 
 struct MapView: View {
     
-    @State private var mapRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 40.7484445,
-                                       longitude: -73.9894536),
-        span: MKCoordinateSpan(latitudeDelta: 0.2,
-                               longitudeDelta: 0.2)
-    )
+    let longitude: Double
+    let latitude: Double
+    
+    @State private var mapRegion : MKCoordinateRegion
+    
+    init(longitude: Double, latitude: Double) {
+        self.longitude = longitude
+        self.latitude = latitude
+        self.mapRegion = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: latitude ,
+                                           longitude: longitude),
+            span: MKCoordinateSpan(latitudeDelta: 0.2,
+                                   longitudeDelta: 0.2))
+    }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Map(coordinateRegion: $mapRegion)
     }
 }
 
 #Preview {
-    MapView()
+    MapView(longitude: -73.9894536, latitude: 40.7484445 )
 }
