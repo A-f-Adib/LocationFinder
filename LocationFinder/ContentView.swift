@@ -35,14 +35,33 @@ struct ContentView: View {
                         .frame(width: 100)
                     
                     Button("Get Location") {
-                        
+                        Task {
+                            await locationService.fetchLocation(for: selectCountry.code, postalCode: code)
+                        }
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(code.isEmpty)
+                    
+                    if let errorString = locationService.errorString {
+                        Text(errorString)
+                            .foregroundStyle(Color.red)
+                    }
+                    if let locationInfo = locationService.locationInfo {
+                        Text(locationInfo.placeName)
+                        Text(locationInfo.state)
+                    }
+                }
+                if locationService.locationInfo == nil {
+                    Image("locationFinder")
                 }
                 Spacer()
             }
             .navigationTitle("Location Finder")
+            .onChange(of: selectCountry) {
+                locationService.reset()
+                code = ""
+            }
+           
         }
        
     }

@@ -72,4 +72,10 @@ class LocationService: ObservableObject {
             errorString = "Could not decode returned result"
         }
     }
+    
+    
+    func reset() {
+        locationInfo = nil
+        errorString = nil
+    }
 }
