@@ -10,6 +10,17 @@ import Foundation
 class LocationService: ObservableObject {
     
     @Published var countries : [Country] = []
+    let baseURL = "https:api.zippopotam.us"
+    
+    struct LocationInfo {
+        let placeName : String
+        let state : String
+        let longitude : Double
+        let latitude: Double
+    }
+    
+    @Published var locationInfo: LocationInfo?
+    @Published var errorString: String?
     
     init() {
         loadCountries()
@@ -32,6 +43,20 @@ class LocationService: ObservableObject {
             countries.insert(Country.none, at: 0)
         } catch {
             fatalError("Failed to decode Countries.json from data")
+        }
+    }
+    
+    
+    @MainActor
+    func fetchLocation(for countryCode: String, postalCode: String) async {
+      
+        guard let urlString = (baseURL + "/" + countryCode + "/" + postalCode)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: urlString)
+        else {
+            errorString = "Invalid code entered"
+            return
         }
     }
 }
