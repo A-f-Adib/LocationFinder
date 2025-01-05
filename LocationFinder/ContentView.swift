@@ -11,6 +11,7 @@ struct ContentView: View {
     
     @StateObject var locationService = LocationService()
     @State private var selectCountry = Country.none
+    @State private var code = ""
     
     var body: some View {
         
@@ -22,6 +23,23 @@ struct ContentView: View {
                     }
                 }
                 .buttonStyle(.bordered)
+                
+                if selectCountry != .none {
+                    Text(selectCountry.range)
+                    Text("Postal Code/Zip Range")
+                        .font(.caption)
+                        .foregroundStyle(Color.blue)
+                    
+                    TextField("Code", text: $code)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(width: 100)
+                    
+                    Button("Get Location") {
+                        
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(code.isEmpty)
+                }
                 Spacer()
             }
             .navigationTitle("Location Finder")
