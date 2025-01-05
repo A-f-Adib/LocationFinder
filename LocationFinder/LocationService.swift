@@ -58,5 +58,18 @@ class LocationService: ObservableObject {
             errorString = "Invalid code entered"
             return
         }
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let location = try JSONDecoder().decode(Location.self, from: data)
+            if let place = location.places.first {
+                locationInfo = LocationInfo(placeName: place.placeName,
+                                            state: place.state,
+                                            longitude: Double(place.longitude) ?? 0,
+                                            latitude: Double(place.latitude) ?? 0)
+            }
+        } catch {
+            errorString = "Could not decode returned result"
+        }
     }
 }
