@@ -9,13 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject var locationService = LocationService()
+    @State private var selectCountry = Country.none
+    
     var body: some View {
         
         NavigationStack {
             VStack {
-               
-                Text("Hello, world!")
+                Picker("Select Country", selection: $selectCountry) {
+                    ForEach(locationService.countries, id: \.code) { country in
+                        Text(country.name).tag(country)
+                    }
+                }
+                .buttonStyle(.bordered)
+                Spacer()
             }
+            .navigationTitle("Location Finder")
         }
        
     }
